@@ -1,16 +1,16 @@
 
+import 'package:firebasetask/Section/SectionScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../SignUpScreen/SignUpScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-
+import 'package:get/get.dart';
+import 'package:firebasetask/locale/locale_controller.dart';
 class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
-
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -19,8 +19,10 @@ class _LoginScreenState extends State<LoginScreen> {
   String password="";
   String? errorMessage;
 final _auth= FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
+    Locale_controller controllerLang =Get.find();
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -54,7 +56,7 @@ final _auth= FirebaseAuth.instance;
                     SizedBox(height: 50),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Center(child: Image.asset('asset/logo.png')),
+                      child: Center(child: Image.asset('asset/icons/logo.png')),
                     ),
                     SizedBox(height: 25),
 
@@ -75,14 +77,14 @@ final _auth= FirebaseAuth.instance;
                           email=emailValue;},
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'please enter your email';
+                            return '13'.tr;
                           }
                           if(!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)){
-                            return("Please Enter a valid Email");
+                            return("14".tr);
                           }return null;
                         },
                         style: TextStyle(fontSize: 20, color: Colors.white),
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           prefixIcon:
                           const CircleAvatar(
                               child: Icon(Icons.email,
@@ -92,7 +94,7 @@ final _auth= FirebaseAuth.instance;
                               backgroundColor: Color.fromRGBO(50, 165, 248, 1),
                               radius: 30),
 
-                          labelText: "      EMAIL",
+                          labelText: "email".tr,
                           labelStyle: TextStyle(color: Colors.white),
                           enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(40.0)),
@@ -129,16 +131,16 @@ final _auth= FirebaseAuth.instance;
                         validator: (value) {
                           RegExp regex = new RegExp(r'^.{6,}$');
                           if (value!.isEmpty) {
-                            return 'password is required for login';
+                            return "11".tr;
                           }
                            if(!regex.hasMatch(value)){
 
-                            return "Please enter valid password(Min. 6 character) ";
+                            return "12".tr;
                           }
                           return null;
                         },
                         style: TextStyle(fontSize: 20, color: Colors.white),
-                        decoration: const InputDecoration(
+                        decoration:  InputDecoration(
                           prefixIcon: Padding(
                             padding: const EdgeInsetsDirectional.only(end: 20),
                             child: CircleAvatar(
@@ -149,9 +151,9 @@ final _auth= FirebaseAuth.instance;
                                 backgroundColor: Color.fromRGBO(50, 165, 248, 1),
                                 radius: 30),
                           ),
-                          labelText: "  PASSOWRD ",
+                          labelText: "password".tr,
                           labelStyle: TextStyle(color: Colors.white),
-                          enabledBorder: const OutlineInputBorder(
+                          enabledBorder:OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(40.0)),
                             borderSide: const BorderSide(
                               color: Colors.grey,
@@ -171,7 +173,7 @@ final _auth= FirebaseAuth.instance;
 
                 ElevatedButton(
                 child: Text(
-                "LOG IN",
+                "login".tr,
                 style: const TextStyle(
                   fontWeight: FontWeight.w600,
                   color: Colors.white,
@@ -189,6 +191,7 @@ final _auth= FirebaseAuth.instance;
               ),
               onPressed: () {
              signIn(emailController.text, passwordController.text);
+
               }),
                     TextButton(
                       onPressed: () {
@@ -198,8 +201,8 @@ final _auth= FirebaseAuth.instance;
                               builder: (context) => SignUpScreen(),
                             ));
                       },
-                      child: const Text(
-                        'Sign Up?',
+                      child:  Text(
+                        "signup.tr?",
                         style: TextStyle(
                           inherit: true,
                           color: Colors.white,
@@ -225,7 +228,7 @@ final _auth= FirebaseAuth.instance;
             .then((uid) => {
           Fluttertoast.showToast(msg: "Login Successful"),
           Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => SignUpScreen())),
+              MaterialPageRoute(builder: (context) => SectionScreen())),
         });
       } on FirebaseAuthException catch (error) {
         switch (error.code) {
@@ -256,4 +259,5 @@ final _auth= FirebaseAuth.instance;
       }
     }
   }
+
 }

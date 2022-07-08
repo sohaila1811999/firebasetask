@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:firebasetask/locale/locale_controller.dart';
+
 
 class RadioGroup extends StatefulWidget {
+  Locale_controller controllerLang =Get.find();
   @override
   RadioGroupWidget createState() => RadioGroupWidget();
 }
@@ -14,6 +18,7 @@ class RadioGroupWidget extends State {
   int id = 1;
 
   Widget build(BuildContext context) {
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
@@ -22,13 +27,13 @@ class RadioGroupWidget extends State {
           groupValue: id,
           onChanged: (val) {
             setState(() {
-              radioButtonItem = 'Doctor';
+              radioButtonItem = "doctor".tr;
               id = 1;
             });
           },
         ),
         Text(
-          'Doctor',
+     "doctor".tr,
           style: new TextStyle(
             fontSize: 20.0,
             color: Colors.white,
@@ -42,13 +47,13 @@ class RadioGroupWidget extends State {
           groupValue: id,
           onChanged: (val) {
             setState(() {
-              radioButtonItem = 'Nurse';
+              radioButtonItem = "nurse".tr;
               id = 2;
             });
           },
         ),
         Text(
-          'Nurse',
+          "nurse".tr,
           style: new TextStyle(
             color: Colors.white,
             fontSize: 20.0,

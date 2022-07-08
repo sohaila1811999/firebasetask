@@ -1,15 +1,18 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebasetask/confirmationScreen/confirmationPage.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../logInScreen/logInScreen.dart';
 import '../model/user_model.dart';
 import 'RadioGroup.dart';
+import 'package:get/get.dart';
+import 'package:firebasetask/locale/locale_controller.dart';
 
 
 class SignUpScreen extends StatefulWidget {
-
+  Locale_controller controllerLang =Get.find();
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
@@ -24,21 +27,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController idNumberController = TextEditingController();
   final TextEditingController sectionNameController = TextEditingController();
-
-// String userName="";
-//
-//   String idNumber="";
-//
-//   String email="";
-//
-//   String password="";
-//
-//   String phoneNumber="";
-//
-//   String sectionName="";
-
   @override
   Widget build(BuildContext context) {
+    Locale_controller controllerLang =Get.find();
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -75,7 +66,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   SizedBox(height: 25),
                   Center(
                     child: Text(
-                      "Sign up",
+                      "signup".tr,
                       style: TextStyle(
                         fontSize: 45,
                         color: Colors.white,
@@ -104,16 +95,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       validator: (value) {
                         RegExp regex = new RegExp(r'^.{3,}$');
                         if (value!.isEmpty) {
-                          return 'user name cannot be empty';
+                          return "1".tr;
                         }
                         if(!regex.hasMatch(value)){
 
-                          return "Please enter valid user name(Min. 3 character) ";
+                          return "2".tr;
                         }
                         return null;
                       },
                       style: TextStyle(fontSize: 20, color: Colors.white),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         prefixIcon: Padding(
                           padding: const EdgeInsetsDirectional.only(end: 20),
                           child: CircleAvatar(
@@ -124,7 +115,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               backgroundColor: Color.fromRGBO(50, 165, 248, 1),
                               radius: 30),
                         ),
-                        labelText: "  USERNAME",
+                        labelText: "username".tr,
                         labelStyle: TextStyle(color: Colors.white),
                         enabledBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(40.0)),
@@ -166,9 +157,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       //   return null;
                       // },
                       style: TextStyle(fontSize: 20, color: Colors.white),
-                      decoration: const InputDecoration(
+                      decoration:  InputDecoration(
                         prefixIcon: Padding(
-                          padding: const EdgeInsetsDirectional.only(end: 20),
+                          padding:  EdgeInsetsDirectional.only(end: 20),
                           child: CircleAvatar(
                               child: Icon(Icons.web_outlined,
                                 color: Colors.white,
@@ -177,7 +168,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               backgroundColor: Color.fromRGBO(50, 165, 248, 1),
                               radius: 30),
                         ),
-                        labelText: "  ID NUMBER ",
+                        labelText: "idnumber".tr,
                         labelStyle: TextStyle(color: Colors.white),
                         enabledBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(40.0)),
@@ -209,16 +200,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       },
                       textInputAction: TextInputAction.next,
 
-                      // onChanged: (emailValue){
-                      //  email=emailValue;},
-                      // validator: (value) {
-                      //   if (value == null || value.isEmpty) {
-                      //     return 'please enter your email';
-                      //   }
-                      //   return null;
-                      // },
+
                       style: TextStyle(fontSize: 20, color: Colors.white),
-                      decoration: const InputDecoration(
+                      decoration:  InputDecoration(
                         prefixIcon:
                          const CircleAvatar(
                               child: Icon(Icons.email,
@@ -228,7 +212,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               backgroundColor: Color.fromRGBO(50, 165, 248, 1),
                               radius: 30),
 
-                        labelText: "      EMAIL",
+                        labelText:"email".tr,
                         labelStyle: TextStyle(color: Colors.white),
                         enabledBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(40.0)),
@@ -261,23 +245,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       },
                       textInputAction: TextInputAction.next,
 
-                      // onChanged: (passwordValue){
-                      //   password=passwordValue;},
-                      // validator: (value) {
-                      //   RegExp regex = new RegExp(r'^.{6,}$');
-                      //   if (value!.isEmpty) {
-                      //     return 'password is required for login';
-                      //   }
-                      //   if(!regex.hasMatch(value)){
-                      //
-                      //     return "Please enter valid password(Min. 6 character) ";
-                      //   }
-                      //   return null;
-                      // },
                       style: TextStyle(fontSize: 20, color: Colors.white),
-                      decoration: const InputDecoration(
+                      decoration:  InputDecoration(
                         prefixIcon: Padding(
-                          padding: const EdgeInsetsDirectional.only(end: 20),
+                          padding:  EdgeInsetsDirectional.only(end: 20),
                           child: CircleAvatar(
                               child: Icon(Icons.lock,
                                 color: Colors.white,
@@ -286,7 +257,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               backgroundColor: Color.fromRGBO(50, 165, 248, 1),
                               radius: 30),
                         ),
-                        labelText: "  PASSOWRD ",
+                        labelText:"password".tr,
                         labelStyle: TextStyle(color: Colors.white),
                         enabledBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(40.0)),
@@ -327,7 +298,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       //   return null;
                       // },
                       style: TextStyle(fontSize: 20, color: Colors.white),
-                      decoration: const InputDecoration(
+                      decoration:  InputDecoration(
                         prefixIcon: CircleAvatar(
                             child: Icon(Icons.account_balance_outlined,
                               color: Colors.white,
@@ -335,7 +306,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                             backgroundColor: Color.fromRGBO(50, 165, 248, 1),
                             radius: 30),
-                        labelText: "     SECTION NAME",
+                        labelText: "section".tr,
                         labelStyle: TextStyle(color: Colors.white),
                         enabledBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(40.0)),
@@ -358,7 +329,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     //
                   ElevatedButton(
                       child: Text(
-                        "CONFIRM NOW",
+                        "confirm".tr,
                         style: const TextStyle(
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
@@ -376,6 +347,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       onPressed: () {
                         signUp(emailController.text, passwordController.text);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => confirmationPage(),
+                            ));
+
     }
     // ),
          ),
@@ -404,25 +381,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
       } on FirebaseAuthException catch (error) {
         switch (error.code) {
           case "invalid-email":
-            errorMessage = "Your email address appears to be malformed.";
+            errorMessage = "3".tr;
             break;
           case "wrong-password":
-            errorMessage = "Your password is wrong.";
+            errorMessage = "4".tr;
             break;
           case "user-not-found":
-            errorMessage = "User with this email doesn't exist.";
+            errorMessage = "5".tr;
             break;
           case "user-disabled":
-            errorMessage = "User with this email has been disabled.";
+            errorMessage = "6".tr;
             break;
           case "too-many-requests":
-            errorMessage = "Too many requests";
+            errorMessage = "7".tr;
             break;
           case "operation-not-allowed":
-            errorMessage = "Signing in with Email and Password is not enabled.";
+            errorMessage = "8".tr;
             break;
           default:
-            errorMessage = "An undefined Error happened.";
+            errorMessage = "9".tr;
         }
         Fluttertoast.showToast(msg: errorMessage!);
         print(error.code);
@@ -451,11 +428,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
         .collection("users")
         .doc(user.uid)
         .set(userModel.toMap());
-    Fluttertoast.showToast(msg: "Account created successfully :) ");
+    Fluttertoast.showToast(msg: "10 ".tr);
 
     Navigator.pushAndRemoveUntil(
         (context),
-        MaterialPageRoute(builder: (context) => LoginScreen()),
+        MaterialPageRoute(builder: (context) => confirmationPage()),
             (route) => false);
   }
 

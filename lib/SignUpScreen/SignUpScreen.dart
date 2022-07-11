@@ -4,7 +4,6 @@ import 'package:firebasetask/confirmationScreen/confirmationPage.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../logInScreen/logInScreen.dart';
 import '../model/user_model.dart';
 import 'RadioGroup.dart';
 import 'package:get/get.dart';

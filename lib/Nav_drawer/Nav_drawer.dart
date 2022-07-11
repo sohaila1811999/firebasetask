@@ -1,11 +1,16 @@
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebasetask/initialscreen.dart';
+import 'package:firebasetask/logInScreen/logInScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
 class NavDrawer extends StatelessWidget {
   final padding = const EdgeInsets.symmetric(horizontal: 20);
-
+  final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
+
     return Drawer(
       child: Material(
         color: Colors.white,
@@ -16,6 +21,7 @@ class NavDrawer extends StatelessWidget {
               height: 20,
             ),
             navItem(
+              onTap:(){ Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> InitialScreen()));} ,
               txt: const Text('Language'),
               icon: const Icon(
                 Icons.language,
@@ -36,17 +42,23 @@ class NavDrawer extends StatelessWidget {
               height: 20,
             ),
             navItem(
+              onTap: ( () async{
+
+    await _auth.signOut();
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginScreen()));
+    }),
               txt: const Text('Log out'),
               icon: const Icon(
                 Icons.logout,
                 color: Colors.indigo,
               ),
-            )
+            ),
           ],
         ),
       ),
     );
   }
+
 }
 
 Widget navItem({

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+import 'package:firebasetask/locale/locale_controller.dart';
 class DialogExample extends StatefulWidget {
   @override
   _DialogExampleState createState() =>  _DialogExampleState();
@@ -17,6 +18,7 @@ class _DialogExampleState extends State<DialogExample> {
 
   @override
   Widget build(BuildContext context) {
+    Locale_controller controllerLang =Get.find();
     return Scaffold(
         body: Container(
           decoration: const BoxDecoration(
@@ -40,9 +42,9 @@ class _DialogExampleState extends State<DialogExample> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 const SizedBox(height: 15),
-                const Center(
+               Center(
                   child: Text(
-                    "Prescription",
+                    "prescription".tr,
                     style: TextStyle(
                       fontSize: 40,
                       color: Colors.white,
@@ -84,15 +86,15 @@ class _DialogExampleState extends State<DialogExample> {
                           padding: const EdgeInsets.all(20),
                           child:  TextField(
                             style: const TextStyle(fontSize: 20),
-                            decoration: const InputDecoration(
-                                hintText: "Update Info"),
+                            decoration:  InputDecoration(
+                                hintText: "updateinfo".tr),
                             controller: _c,
                             maxLines: 5,
                             autocorrect: true,
                           ),
                         ),
                         TextButton(
-                          child: const Text("Save"),
+                          child:  Text("save".tr),
                           onPressed: () {
                             setState(() {
                               _text = _c.text;

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import '../Nav_drawer/Nav_drawer.dart';
-
+import 'package:get/get.dart';
+import 'package:firebasetask/locale/locale_controller.dart';
 class patientDiagnosis extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Locale_controller controllerLang =Get.find();
     return MyHomePage();
   }
 }
@@ -22,8 +24,8 @@ int index = 0;
 List<myItems> items = [
   myItems(
       body: defaultTextForm(),
-      header: const Text(
-        'Current Diagnosis',
+      header: Text(
+        'currentdiagnosis'.tr,
         style: TextStyle(
           fontSize: 20,
           color: Color(0xFF242456),
@@ -32,8 +34,8 @@ List<myItems> items = [
       )),
   myItems(
       body: defaultTextForm(),
-      header: const Text(
-        'Chronic Diseases',
+      header: Text(
+        'chronicdiseases'.tr,
         style: TextStyle(
             fontSize: 20,
             color: Color(0xFF242456),
@@ -41,8 +43,8 @@ List<myItems> items = [
       )),
   myItems(
       body: defaultTextForm(),
-      header: const Text(
-        'forbidden',
+      header: Text(
+        'forbidden'.tr,
         style: TextStyle(
             fontSize: 20,
             color: Color(0xFF242456),
@@ -58,6 +60,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    Locale_controller controllerLang =Get.find();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(

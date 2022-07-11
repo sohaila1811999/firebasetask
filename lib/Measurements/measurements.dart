@@ -97,8 +97,8 @@ class Measurements extends StatelessWidget {
                                       height: 5.0,
                                     ),
                                     // SizedBox(height:20 ,),
-                                    const Text(
-                                      "Heart Beats",
+                                Text(
+                                      "heartbeats".tr,
                                       style: TextStyle(color: Colors.black),
                                     ),
                                     const SizedBox(
@@ -130,8 +130,8 @@ class Measurements extends StatelessWidget {
                                     const SizedBox(
                                       height: 5.0,
                                     ),
-                                    const Text(
-                                      "Oxygen Rate",
+                                 Text(
+                                      "oxygenrate".tr,
                                       style: TextStyle(color: Colors.black),
                                     ),
                                     const SizedBox(
@@ -157,8 +157,8 @@ class Measurements extends StatelessWidget {
                                     const SizedBox(
                                       height: 5.0,
                                     ),
-                                    const Text(
-                                      "Blood Pressure",
+                                   Text(
+                                      "bloodpressure".tr,
                                       style: TextStyle(color: Colors.black),
                                     ),
                                     const SizedBox(
@@ -183,8 +183,8 @@ class Measurements extends StatelessWidget {
                                     const SizedBox(
                                       height: 5.0,
                                     ),
-                                    const Text(
-                                      "Temperature",
+                                Text(
+                                      "temperature".tr,
                                       style: TextStyle(color: Colors.black),
                                     ),
                                     const SizedBox(

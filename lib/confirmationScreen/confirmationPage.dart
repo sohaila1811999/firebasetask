@@ -1,8 +1,10 @@
 
+import 'package:firebasetask/Section/SectionScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebasetask/locale/locale_controller.dart';
 class confirmationPage extends StatelessWidget{
+  final TextEditingController confirmationNumber = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Locale_controller controllerLang =Get.find();
@@ -44,14 +46,20 @@ class confirmationPage extends StatelessWidget{
               ),
               SizedBox(height: 25),
               Center(
-                child: Image.asset('asset/confirmIcon.png'),
+                child: Image.asset('asset/icons/confirmIcon.png'),
               ),
               SizedBox(height: 25),
               Container(width: 300,
                 height: 70,
-                child: TextField(
+                child: TextFormField(
+                validator: (value) {
+
+    if (value!.isEmpty)
+    return "1".tr;
+    },
                   style:TextStyle(fontSize: 20,color: Colors.white),
                   decoration: new InputDecoration(
+
                     hintText: "co1".tr,
                     hintStyle:TextStyle(fontSize: 20.0,color: Colors.white) ,
                     enabledBorder: const OutlineInputBorder(
@@ -64,8 +72,8 @@ class confirmationPage extends StatelessWidget{
                       borderRadius: BorderRadius.all(Radius.circular(40.0)),
                       borderSide: BorderSide(color: Colors.blue),
                     ),
-                  ),),
-              ),
+                  ),
+    ),),
               SizedBox(height: 25),
 
               Container(width: 304,
@@ -77,7 +85,15 @@ class confirmationPage extends StatelessWidget{
                   //  minWidth: double.infinity,
                   //height: 70,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-                  onPressed: (){},),
+                  onPressed: (){
+
+    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SectionScreen(),
+                        ));
+
+                  },),
               ),
 
 

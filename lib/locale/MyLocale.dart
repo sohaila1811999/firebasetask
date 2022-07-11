@@ -47,6 +47,18 @@ class MyLocale extends Translations {
       "r8":"غرفة 8",
       "r9": "غرفة 9",
       "r10":"غرفة 10",
+      "cuurentdiagnosis":"التشخيص",
+      "chronicdiseases":"الأمراض المزمنة",
+      "forbidden":"الممنوعات",
+      "prescription":"الوصفة الطبية",
+      "updateinfo":"تحديث",
+      "save":"حفظ",
+      "heartbeats":"نبض القلب",
+      "oxygenrate":"نسبة الأكسجين",
+      "bloodpressure":"ضغط الدم",
+      "temperature":"درجة الحرارة",
+
+
 
     },
     "en":{
@@ -89,6 +101,17 @@ class MyLocale extends Translations {
       "r8":"ROOM 8",
      "r9": "ROOM 9",
       "r10":"ROOM 10",
+      "cuurentdiagnosis":"Current Diagnosis",
+      "chronicdiseases":"Chronic Diseases",
+      "forbidden":"Forbidden",
+      "prescription":"Prescription",
+      "updateinfo":"Update Info",
+      "save":"Save",
+      "heartbeats":"Heart Beats",
+      "oxygenrate":"Oxygen Rate",
+      "bloodpressure":"Blood Pressure",
+      "temperature":"Temperature",
+
 
     },
 

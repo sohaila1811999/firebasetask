@@ -202,7 +202,7 @@ final _auth= FirebaseAuth.instance;
                             ));
                       },
                       child:  Text(
-                        "signup.tr?",
+                        "signup.tr",
                         style: TextStyle(
                           inherit: true,
                           color: Colors.white,
